@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Indah</title>
+    <meta name="description"
+        content="Website resmi Cafe Indah, tempat terbaik untuk menikmati kopi dan makanan lezat dengan suasana yang nyaman.">
+    <meta name="keywords" content="cafe, kopi, makanan, Indah, Jakarta">
+    <meta name="author" content="Cafe Indah">
+    <!-- Favicon placeholder (gunakan data URL untuk demo) -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+    <style>
+        /* Reset dan base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-padding-top: 80px;
+        }
+
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        #beranda {
+            background-image: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8B4513;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #8B4513;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Responsif untuk mobile */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 15px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0 40px;
+            min-height: auto;
+        }
+
+        #beranda {
+            background-image: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #beranda .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        #beranda .hero-content p {
+            font-size: 24px;
+        }
+
+        /* Responsif untuk hero */
+        @media (max-width: 768px) {
+            #beranda {
+                min-height: auto;
+                /* Override min-height default */
+                height: 75vw;
+                /* Rasio 4:3 (lebar 100vw, tinggi 75vw) */
+            }
+
+            #beranda .hero-content h1 {
+                font-size: 32px;
+            }
+
+            #beranda .hero-content p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #beranda .hero-content h1 {
+                font-size: 24px;
+            }
+
+            #beranda .hero-content p {
+                font-size: 16px;
+            }
+        }
+
+        /* Tentang Kami */
+        #tentang-kami {
+            background-color: #fff;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 16px;
+            /* jarak antar paragraf */
+            line-height: 1.8;
+        }
+
+
+        .about-image {
+            flex: 1;
+        }
+
+        #tentang-kami h2 {
+            margin-bottom: 10px;
+            /* kecilin jarak ke konten bawah */
+        }
+
+        #tentang-kami p {
+            margin-top: 0;
+            /* hilangkan jarak atas paragraf */
+        }
+
+        /* Responsif untuk tentang kami */
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        /* Menu & Layanan */
+        #menu-layanan {
+            background-color: #f9f9f9;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Responsif untuk menu */
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 10px;
+            }
+        }
+
+        /* Galeri */
+        #galeri {
+            background-color: #fff;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item img:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsif untuk galeri */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 10px;
+            }
+        }
+
+        /* Tim */
+        #tim {
+            background-color: #f9f9f9;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .team-member {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        /* Responsif untuk tim */
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 10px;
+            }
+        }
+
+        /* Kontak */
+        #kontak {
+            background-color: #fff;
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input,
+        textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #8B4513;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #654321;
+        }
+
+        /* Responsif untuk kontak */
+        @media (max-width: 768px) {
+            .contact-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            font-size: 24px;
+        }
+
+        /* Responsif untuk footer */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">Cafe Indah</div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#tentang-kami">Tentang Kami</a></li>
+                    <li><a href="#menu-layanan">Menu & Layanan</a></li>
+                    <li><a href="#galeri">Galeri</a></li>
+                    <li><a href="#tim">Tim</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Beranda -->
+    <section id="beranda">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Cafe Indah | Brosilomilo web example</h1>
+                <p>Nikmati Kenikmatan di Setiap Seduhan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Kami -->
+    <section id="tentang-kami">
+        <div class="container">
+            <h2>Tentang Kami</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-text">
+                        <p class="lead">
+                            <strong>Cafe Indah</strong> adalah tempat di mana kualitas, kenyamanan, dan rasa bertemu
+                            dalam satu pengalaman yang berkesan.
+                        </p>
+                        <p>
+                            Kami menghadirkan kopi berkualitas tinggi dari biji pilihan yang diracik
+                            dengan standar terbaik untuk menghasilkan cita rasa yang konsisten dan memuaskan.
+                            Setiap cangkir dibuat dengan perhatian terhadap detail, karena kami percaya bahwa
+                            kualitas adalah fondasi dari pengalaman yang baik.
+                        </p>
+                        <p>
+                            Lebih dari sekadar menikmati kopi, Cafe Indah menawarkan suasana yang hangat
+                            dan nyaman — tempat yang ideal untuk bersantai, bekerja, maupun berbagi waktu
+                            bersama orang terdekat.
+                        </p>
+                        <p>
+                            Dengan desain ruang yang tenang dan pelayanan yang ramah, kami berupaya
+                            menciptakan lingkungan yang membuat setiap pengunjung merasa diterima dan betah.
+                        </p>
+                    </div>
+
+
+                </div>
+                <div class="about-image">
+                    <img src="https://i.pinimg.com/1200x/ee/10/a5/ee10a5c6589656649097ffbbf102e7ec.jpg"
+                        alt="Tim Cafe Indah">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu & Layanan -->
+    <section id="menu-layanan">
+        <div class="container">
+            <h2>Menu & Layanan</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://i.pinimg.com/736x/4d/ee/81/4dee81f6a2a2453e061e9352c62f8b78.jpg" alt="Espresso">
+                    <h3>Espresso</h3>
+                    <p>Kopi hitam klasik yang kuat dan aromatik. Harga: Rp 25.000</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://i.pinimg.com/736x/80/e2/0a/80e20ade3f26efeda7d18959547e23ad.jpg" alt="Cappuccino">
+                    <h3>Cappuccino</h3>
+                    <p>Perpaduan sempurna antara espresso, susu, dan busa. Harga: Rp 35.000</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://i.pinimg.com/736x/2d/ff/e7/2dffe74a17a4e0910b3c605b20137d4a.jpg"
+                        alt="Sandwich Ayam">
+                    <h3>Sandwich Ayam</h3>
+                    <p>Sandwich gurih dengan ayam panggang dan sayuran segar. Harga: Rp 40.000</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://i.pinimg.com/1200x/46/4c/d7/464cd7b759efa52eb7c1305caed09dcd.jpg"
+                        alt="Kue Cokelat">
+                    <h3>Kue Cokelat</h3>
+                    <p>Kue lembut dengan lapisan cokelat yang meleleh. Harga: Rp 30.000</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://i.pinimg.com/1200x/4d/fd/cb/4dfdcbc0efbe41aa151e0e471a470d34.jpg" alt="Salad">
+                    <h3>Salad</h3>
+                    <p>Salad segar dengan sayuran renyah, paduan rasa ringan dan dressing yang menyegarkan di setiap
+                        suapan.. Harga: Rp 30.000</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://i.pinimg.com/1200x/cf/9b/af/cf9bafa8f904bb4c2aacf06cebf46331.jpg" alt="Croissant">
+                    <h3>Croissant</h3>
+                    <p>Croissant renyah keemasan di luar, lembut buttery di dalam, dengan aroma mentega menggoda.
+                        Harga: Rp 45.000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri -->
+    <section id="galeri">
+        <div class="container">
+            <h2>Galeri</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://i.pinimg.com/1200x/79/56/28/7956288343b6bb2482220b647a8e2118.jpg"
+                        alt="Interior Cafe">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.pinimg.com/736x/50/cc/1f/50cc1f60acf21ed2a887d414e7366147.jpg"
+                        alt="Event di Cafe">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                        alt="Menu Display">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.pinimg.com/1200x/19/ed/8e/19ed8eb6765f67a1cef49c4d7751164a.jpg"
+                        alt="Outdoor Seating">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak">
+        <div class="container">
+            <h2>Kontak Kami</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="text" id="name" placeholder="Nama" required>
+                        <input type="email" id="email" placeholder="Email" required>
+                        <textarea id="message" placeholder="Pesan" rows="5" required></textarea>
+                        <button type="submit">Kirim Pesan</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <p><strong>Alamat:</strong> Jl. Indah No. 123, Jakarta</p>
+                    <p><strong>Telepon:</strong> +628 xxx xxx xxxx</p>
+                    <p><strong>Email:</strong> brosilomiloexample@cafeindah.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2026 Cafe Indah | Brosilomilo website example. All rights reserved.</p>
+                </div>
+                <div>
+                    <a href="#beranda">Beranda</a> |
+                    <a href="#tentang-kami">Tentang Kami</a> |
+                    <a href="#menu-layanan">Menu</a> |
+                    <a href="#kontak">Kontak</a>
+                </div>
+                <div class="social-links">
+                    <a href="facebook.com" title="Facebook"><i class="fas fa-facebook-f"></i> Facebook</a>
+                    <a href="instagram.com" title="Instagram"><i class="fas fa-instagram"></i>Instagram</a>
+                    <a href="mailto:brosilomiloo@gmail.com?subject=Konsultasi%20Website&body=Halo%20Brosilomilo,%0ASaya%20ingin%20konsultasi%20website."
+                        class="btn btn-primary btn-lg w-100">
+                        <i class="fas fa-envelope"></i>Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript untuk navigasi responsif
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Validasi dan submit form kontak
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (name === '' || email === '' || message === '') {
+                alert('Semua field harus diisi!');
+                return;
+            }
+
+            // Validasi email sederhana
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Email tidak valid!');
+                return;
+            }
+
+            // Simulasi submit (dalam demo, tampilkan alert)
+            alert('Pesan berhasil dikirim! Terima kasih.');
+            contactForm.reset();
+        });
+
+        // Smooth scroll untuk navigasi
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
